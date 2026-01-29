@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang= 
+<html lang="ko">
 <head>
 <meta name="robots" content="noindex, nofollow">
 <meta charset="UTF-8">
@@ -1380,6 +1380,16 @@ const dragFeatureCode = `
         
         .content-body img { cursor: col-resize; max-width: 100%; min-width: 50px; }
         .resizing { user-select: none; cursor: col-resize !important; }
+
+       @supports (-webkit-touch-callout: none) {
+            .pdf-save-btn {
+                top: 60px !important; 
+            }
+            .container {
+                margin-top: 50px !important;
+                padding-bottom: 100px !important; 
+            }
+        }
       </style>
       
       <script>
