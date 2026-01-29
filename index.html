@@ -57,7 +57,6 @@
         }
 
         // 1. 단순 비교 대신 '소금(Salt)'을 쳐서 변환 (소스보기 방지)
-        // 사용자가 입력한 값 뒤에 몰래 "_secret_key_2027"을 붙여서 변환함
         var _salt = "_secret_key_2027";
         
         try {
@@ -91,10 +90,7 @@
     // [기타 초기화 로직]
     // ==========================================
     window.addEventListener('load', function() {
-        // 날짜 자동입력 실행
         if(typeof setToday === 'function') setToday();
-
-        // 입력창 포커스
         var passInput = document.getElementById('userPass');
         if(passInput && document.getElementById('login-overlay').style.display !== 'none') { 
             passInput.focus(); 
@@ -172,7 +168,6 @@
   /* [좌측 사이드바] */
   .sidebar {
     width: 405px; 
-    /* 기본(회의) 모드 배경: 다크 네이비 */
     background: linear-gradient(170deg, var(--sidebar-bg-start) 0%, #171923 100%); 
     padding: 50px 32px; 
     display: flex;
@@ -184,13 +179,9 @@
     position: relative;
     overflow: hidden; 
     justify-content: center;
-    
-    /* 배경색 부드러운 전환 효과 */
     transition: background 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
   
-  /* [수정] 출장 모드 테마: 딥 스틸 (Slate Teal / Deep Steel) */
-  /* 차분하고 지적인 느낌의 딥 틸/스틸 컬러. 골드와 하얀색 텍스트가 매우 선명하게 보임 */
   .trip-skin {
   background: linear-gradient(135deg, #172554 0%, #0f172a 100%) !important;
   }
@@ -207,17 +198,15 @@
 
   .brand { margin-bottom: 25px; position: relative; z-index: 1; flex-shrink: 0; }
   
-  /* H1을 Flex 컨테이너로 만들어 양쪽 정렬 */
   .brand h1 {
     font-size: 23px; font-weight: 800; margin: 0 0 7px 0; letter-spacing: -0.5px; 
     display: flex; 
-    justify-content: space-between; /* 양끝 정렬 */
+    justify-content: space-between; 
     align-items: center; 
-    width: 100%; /* 가로 꽉 채우기 */
+    width: 100%; 
     color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3);
   }
   
-  /* 토글 스위치 스타일 */
   .mode-switch-container {
     display: inline-flex;
     position: relative;
@@ -263,10 +252,9 @@
   }
 
   .mode-label-text.active {
-    color: #451a03; /* 강조 텍스트 색상 */
+    color: #451a03; 
   }
 
-  /* 토글 상태 클래스 (JS로 제어) */
   .mode-switch-container.trip-mode .mode-switch-slider {
     transform: translateX(44px);
   }
@@ -358,9 +346,8 @@
   #sourceView { display: flex; flex-direction: column; max-width: 800px; width: 100%; height: auto; gap: 0; }
   
   .input-label-area {
-    display: flex; align-items: center; justify-content: space-between; /* 양끝 정렬 */
+    display: flex; align-items: center; justify-content: space-between; 
     gap: 12px; 
-    /* 기본 헤더 배경 */
     background: linear-gradient(170deg, var(--sidebar-bg-start) 0%, #171923 100%);
     color: white;
     padding: 10px 18px; 
@@ -368,7 +355,7 @@
     width: 100%; 
     margin-left: 0; 
     box-shadow: 0 -4px 15px rgba(0,0,0,0.08); position: relative; z-index: 2;
-    transition: background 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); /* 색상 전환 효과 */
+    transition: background 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
   
   .input-label-left { display: flex; align-items: center; gap: 10px; } 
@@ -378,7 +365,6 @@
 
   .input-label-text { font-size: 16px; font-weight: 700; letter-spacing: -0.2px; color: #f1f5f9; }
 
-  /* [유지] 높이 450px */
   .editor-shell {
     height: 450px; 
     min-height: auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 0 12px 12px 12px;
@@ -399,26 +385,23 @@
   
   .filename { font-size: 13px; color: #64748b; font-weight: 700; font-family: 'Consolas', monospace; }
 
-  /* [수정] 초기화 버튼: 컴팩트하고 자연스러운 원형 아이콘 */
   .code-clear-btn {
     background: rgba(255, 255, 255, 0.1); 
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 6px; 
-    width: 26px; height: 26px; /* 크기 최적화 (32px -> 26px) */
+    width: 26px; height: 26px; 
     display: inline-flex; align-items: center; justify-content: center;
     cursor: pointer; color: #cbd5e1;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
-  /* 마우스 오버 시 스타일 및 회전 */
   .code-clear-btn:hover { 
     background: rgba(255, 255, 255, 0.25); 
     border-color: rgba(255, 255, 255, 0.4); 
     color: #ffffff; 
-    transform: rotate(180deg); /* 자연스러운 회전 */
+    transform: rotate(180deg); 
   }
   
-  /* 아이콘 SVG 설정 (선 두께와 크기 조정) */
   .code-clear-btn svg { 
     width: 14px; height: 14px; 
     fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; 
@@ -452,7 +435,7 @@
     border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer;
     box-shadow: 0 10px 20px rgba(30, 41, 59, 0.2); display: flex; justify-content: center; align-items: center; gap: 10px;
     transition: all 0.2s;
-    transition: background 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); /* 색상 전환 효과 */
+    transition: background 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); 
   }
   .btn-execute:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(30, 41, 59, 0.35); }
 
@@ -470,12 +453,9 @@
     .editor-header { flex-direction: column; align-items: flex-start; height: auto; padding: 10px 15px; gap: 8px; }
     .header-left-group { margin-bottom: 2px; }
     .paste-guide { margin-left: 0; width: 100%; justify-content: center; background: #f1f5f9; padding: 6px; }
-    .editor-shell { height: 280px; } /* 모바일에서는 더 작게 */
+    .editor-shell { height: 280px; } 
   }
-/* ================================================= */
-  /* [1. 노트북 전용: 80% 축소 모드] */
-  /* 수정: 높이 기준을 1000px -> 880px로 낮춤 (듀얼모니터 오작동 방지) */
-  /* ================================================= */
+
   @media screen and (max-height: 880px) and (min-width: 1100px) {
     body {
       overflow: hidden !important;
@@ -486,7 +466,7 @@
       background-color: #eef2f6 !important;
     }
     .app-window {
-      transform: scale(0.8) !important; /* 노트북만 0.8배 (20% 축소) */
+      transform: scale(0.8) !important; 
       transform-origin: center center !important;
       
       width: 1380px !important;
@@ -497,10 +477,6 @@
     }
   }
 
-  /* ================================================= */
-  /* [2. 모바일/태블릿 전용 모드] */
-  /* -> 기존과 동일 (터치 스크롤 허용) */
-  /* ================================================= */
   @media screen and (max-width: 1099px) {
     body {
       overflow-y: auto !important;
@@ -523,7 +499,6 @@
     }
     .brand h1 { font-size: 20px !important; }
   }
-  /* [설명서 글씨 연하게 만들기] */
   .code-input::placeholder {
     color: #94a3b8 !important;
     opacity: 0.7 !important;
@@ -1058,7 +1033,7 @@ cite, .cite, [data-source], span[class*="cite"] { display: none !important; opac
 
 <script>
   let transcriptContent = "";
-  let isTripMode = false; // [수정] 모드 상태 변수
+  let isTripMode = false;
 
   function setToday() {
     const now = new Date();
@@ -1072,48 +1047,40 @@ cite, .cite, [data-source], span[class*="cite"] { display: none !important; opac
   
   window.onload = function() { setToday(); };
 
-  // [수정] 모드 전환 기능 (슬라이드 & 텍스트 변경 & 배경색 변경)
   function toggleMode() {
     isTripMode = !isTripMode;
-    const sidebar = document.getElementById('sidebar'); // 사이드바
-    const rightHeader = document.getElementById('rightHeader'); // 우측 코드 입력창 헤더
-    const btnExecute = document.getElementById('btnExecute'); // 실행 버튼
+    const sidebar = document.getElementById('sidebar'); 
+    const rightHeader = document.getElementById('rightHeader'); 
+    const btnExecute = document.getElementById('btnExecute'); 
     
     const switchContainer = document.getElementById('modeSwitch');
     const labelMeeting = document.getElementById('labelMeeting');
     const labelTrip = document.getElementById('labelTrip');
-    const mainTitle = document.getElementById('mainTitle'); // 메인 제목
-    const btnExecuteText = document.getElementById('btnExecuteText'); // 버튼 텍스트
+    const mainTitle = document.getElementById('mainTitle'); 
+    const btnExecuteText = document.getElementById('btnExecuteText'); 
 
-    // UI 상태 토글
     if (isTripMode) {
-        // [수정] 3개 영역(사이드바, 우측헤더, 버튼)에 Trip Theme 적용
         sidebar.classList.add('trip-skin');
         rightHeader.classList.add('trip-skin');
         btnExecute.classList.add('trip-skin');
         
-        // 스위치 및 라벨
         switchContainer.classList.add('trip-mode');
         labelMeeting.classList.remove('active');
         labelTrip.classList.add('active');
 
-        // [수정] 텍스트 변경
         mainTitle.innerText = "AI 출장보고서 변환기";
         btnExecuteText.innerText = "▶ 출장보고서 생성하기 (START)";
 
         document.getElementById('lbl_title').innerText = "출장 내용 (TITLE)"; 
-        // [수정] placeholder에서 '예: ' 제거
         document.getElementById('info_title').placeholder = "고객사 기술 지원 및 미팅";
         
         document.getElementById('lbl_date').innerText = "출장 일정 (SCHEDULE)";
-        // [수정] placeholder에서 '예: ' 제거
         document.getElementById('info_date').placeholder = "26.01.24 ~ 01.26 (2박 3일)";
 
         document.getElementById('lbl_purpose').innerText = "핵심 안건 (AGENDA)";
         document.getElementById('info_purpose').placeholder = "현장 점검 및 기술 협의";
 
         document.getElementById('lbl_room').innerText = "출장 장소 (LOCATION)";
-        // [수정] placeholder에서 '예: ' 제거
         document.getElementById('info_room').placeholder = "서울 본사, 협력사 공장";
 
         document.getElementById('lbl_attendees').innerText = "관련 인원 (PARTICIPANTS)";
@@ -1122,26 +1089,21 @@ cite, .cite, [data-source], span[class*="cite"] { display: none !important; opac
         document.getElementById('txt_step1').innerText = "출장녹음 업로드(.txt)";
 
     } else {
-        // [수정] Trip Theme 제거
         sidebar.classList.remove('trip-skin');
         rightHeader.classList.remove('trip-skin');
         btnExecute.classList.remove('trip-skin');
 
-        // 스위치 및 라벨
         switchContainer.classList.remove('trip-mode');
         labelTrip.classList.remove('active');
         labelMeeting.classList.add('active');
 
-        // [수정] 텍스트 복구
         mainTitle.innerText = "AI 회의록 변환기";
         btnExecuteText.innerText = "▶ 회의록 문서 생성하기 (START)";
 
         document.getElementById('lbl_title').innerText = "회의 주제 (PROJECT)";
-        // [수정] placeholder에서 '예: ' 제거
         document.getElementById('info_title').placeholder = "기술미팅";
         
         document.getElementById('lbl_date').innerText = "일시 (DATE & TIME)";
-        // [수정] placeholder에서 '예: ' 제거
         document.getElementById('info_date').placeholder = "26/1/24 14:00";
 
         document.getElementById('lbl_purpose').innerText = "핵심 목적 (OBJECTIVE)";
@@ -1197,23 +1159,20 @@ cite, .cite, [data-source], span[class*="cite"] { display: none !important; opac
   });
 
   function copyPrompt() {
-    // 1. 입력값 가져오기
     const title = document.getElementById('info_title').value.trim();
     const date = document.getElementById('info_date').value.trim();
     const purpose = document.getElementById('info_purpose').value.trim();
     const room = document.getElementById('info_room').value.trim();
     const attendees = document.getElementById('info_attendees').value.trim();
 
-    // 2. 필수 입력값 체크
     if (!title || !date || !purpose || !room || !attendees) { alert("⚠️ [안내] 5가지 필수 입력 항목을 모두 채워주세요."); return; }
     if (!transcriptContent) { alert("⚠️ [안내] 1단계: 텍스트 파일(.txt)을 먼저 업로드해주세요."); return; }
 
-    // 3. 프롬프트 내용 조합
     let promptId = isTripMode ? 'tripPrompt' : 'masterPrompt';
     let fullPrompt = document.getElementById(promptId).value;
 
     if(isTripMode && !fullPrompt) {
-        alert("⚠️ [주의] 출장용 프롬프트 내용이 비어있습니다.\n소스 코드 하단의 textarea id='tripPrompt' 영역에 내용을 채워주세요.");
+        alert("⚠️ [주의] 출장용 프롬프트 내용이 비어있습니다.");
         return;
     }
 
@@ -1225,44 +1184,33 @@ cite, .cite, [data-source], span[class*="cite"] { display: none !important; opac
 
     const finalContent = fullPrompt + "\n\n--- [입력된 텍스트] ---\n" + transcriptContent;
 
-    // ============================================================
-    // [수정된 핵심 로직] 최신 브라우저 & 구형/보안 PC 모두 호환
-    // ============================================================
-    
-    // 1. 최신 방식 시도
     if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(finalContent)
             .then(() => alertSuccess())
-            .catch(() => fallbackCopy(finalContent)); // 실패 시 비상용 함수 실행
+            .catch(() => fallbackCopy(finalContent)); 
     } else {
-        // 아예 최신 기능이 없는 경우 바로 비상용 함수 실행
         fallbackCopy(finalContent);
     }
 
-    // [성공 메시지 함수]
     function alertSuccess() {
         const modeName = isTripMode ? "출장보고서" : "회의록";
         alert(`✅ [${modeName} 모드] 전체 프롬프트가 복사되었습니다.\nGemini에 바로 붙여넣기(Ctrl+V) 하세요.`);
     }
 
-    // [비상용 강제 복사 함수] (회사컴/구형컴 보험용)
     function fallbackCopy(text) {
         try {
             const textArea = document.createElement("textarea");
             textArea.value = text;
             textArea.style.position = "fixed";
-            textArea.style.left = "-9999px"; // 화면 밖으로 숨김
+            textArea.style.left = "-9999px"; 
             document.body.appendChild(textArea);
             textArea.focus();
             textArea.select();
-            
-            const successful = document.execCommand('copy'); // 강제 복사 명령
+            const successful = document.execCommand('copy'); 
             document.body.removeChild(textArea);
-            
             if (successful) alertSuccess();
             else throw new Error("복사 실패");
         } catch (err) {
-            // 최후의 수단: 직접 복사 유도
             window.prompt("⚠️ 보안상 자동 복사가 차단되었습니다. 아래 텍스트를 직접 복사(Ctrl+C)하세요:", text);
         }
     }
@@ -1279,7 +1227,6 @@ function executeConversion() {
     const rawInput = document.getElementById('inputCode').value;
     let cleanHtml = rawInput;
 
-    // 1. 제미나이 마크다운(```html ... ```) 제거 로직
     if (cleanHtml.includes("```")) {
       const parts = cleanHtml.split("```");
       for(let part of parts) {
@@ -1292,64 +1239,70 @@ function executeConversion() {
 
     if(!cleanHtml) { alert("변환할 코드를 입력해주세요."); return; }
 
+    // [중요] HTML2Canvas CDN을 변환된 HTML에 강제 주입
+    if(cleanHtml.includes("<head>")) {
+        cleanHtml = cleanHtml.replace("<head>", `<head><script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"><\/script>`);
+    }
+
 const dragFeatureCode = `
-      <button onclick="window.print()" class="pdf-save-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="save-icon">
-              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-              <polyline points="17 21 17 13 7 13 7 21"></polyline>
-              <polyline points="7 3 7 8 15 8"></polyline>
-          </svg>
-          <div class="btn-text-group">
-              PDF 저장<br>
-              <span class="btn-sub-text">※ 인쇄 설정: 'PDF로 저장' 선택</span>
+      <div class="toolbar-container">
+          <button onclick="saveAsImage()" class="tool-btn img-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              <div class="btn-text-group">
+                  이미지 저장 (추천)<br>
+                  <span class="btn-sub-text">※ 모바일/PC 최적화</span>
+              </div>
+          </button>
+          
+          <button onclick="window.print()" class="tool-btn pdf-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              <div class="btn-text-group">
+                  PDF 인쇄 (PC용)<br>
+                  <span class="btn-sub-text">※ 아이폰 사용불가</span>
+              </div>
+          </button>
+      </div>
+
+      <div id="loadingOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:999999; flex-direction:column; justify-content:center; align-items:center; color:white; font-family:sans-serif;">
+          <div class="spinner" style="border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite;"></div>
+          <p style="margin-top:20px; font-weight:bold;">이미지 변환 중...</p>
+      </div>
+      
+      <div id="imageModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999999; flex-direction:column; align-items:center; overflow-y:auto; padding:20px;">
+          <div style="background:white; padding:15px; border-radius:10px; text-align:center; margin-bottom:15px; width:90%; max-width:400px;">
+             <p style="margin:0; font-weight:bold; color:#e11d48; font-size:16px;">👇 이미지를 꾹 눌러서 저장하세요</p>
+             <button onclick="document.getElementById('imageModal').style.display='none'" style="margin-top:10px; padding:8px 20px; border:1px solid #ddd; background:#f1f5f9; border-radius:5px; width:100%;">닫기</button>
           </div>
-      </button>
+          <img id="resultImg" style="width:100%; max-width:1170px; border:1px solid white; box-shadow:0 10px 30px rgba(0,0,0,0.5);" />
+      </div>
 
       <style>
-        /* [버튼 스타일: 원본 크기 & 상단 위치 유지] */
-        .pdf-save-btn {
-            position: fixed; 
-            top: 10px;    /* 맨 위 회색 여백 */
-            right: 40px;  /* 우측 여백 */
-            z-index: 99999; 
-            
-            background: #1a1a1a; 
-            color: white; 
-            border: 1px solid rgba(255,255,255,0.2); 
-            
-            /* 버튼 크기 원본(큼직하게) 유지 */
-            padding: 10px 20px 10px 16px; 
-            border-radius: 8px; 
-            
-            font-family: 'Pretendard', sans-serif; 
-            cursor: pointer; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
-            display: flex; align-items: center; gap: 12px; 
-            text-align: left; line-height: 1.4; transition: all 0.2s ease;
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        .toolbar-container {
+            position: fixed; top: 10px; right: 40px; z-index: 99999;
+            display: flex; gap: 10px;
         }
 
-        .pdf-save-btn:hover { background: #333333; transform: translateY(-2px); }
-        .save-icon { color: #e2e8f0; flex-shrink: 0; }
-        .btn-text-group { display: flex; flex-direction: column; }
-        .btn-sub-text { font-size: 11px; opacity: 0.8; letter-spacing: -0.5px; }
+        .tool-btn {
+            background: #1a1a1a; color: white; 
+            border: 1px solid rgba(255,255,255,0.2); 
+            padding: 10px 16px; border-radius: 8px; 
+            font-family: 'Pretendard', sans-serif; cursor: pointer; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+            display: flex; align-items: center; gap: 10px; 
+            text-align: left; line-height: 1.4; transition: all 0.2s ease;
+        }
+        .tool-btn:hover { transform: translateY(-2px); }
+        .img-btn { background: #0f172a; border-color: #3b82f6; }
+        .img-btn:hover { background: #1e293b; }
+        .pdf-btn:hover { background: #333; }
+
+        .btn-sub-text { font-size: 11px; opacity: 0.7; }
         
-        /* [기능 보호 구역] */
-        @media print { 
-            .pdf-save-btn { display: none !important; }
-            
-            /* ▼▼▼ [추가된 부분] 모바일 PDF 저장 시 '연초록색' 방지 코드 ▼▼▼ */
-            /* 인쇄 시 배경색을 표준 회색(#f2f2f2)으로 강력하게 고정합니다 */
-            .label, .body-header, th {
-                background-color: #f2f2f2 !important; 
-                color: #000 !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-            /* 본문 셀은 무조건 흰색으로 고정 */
-            .content-cell, td {
-                background-color: #ffffff !important;
-            }
-            /* ▲▲▲ [추가 완료] ▲▲▲ */
+        /* [중요: PDF 인쇄 시 A4 자동 맞춤 로직] */
+        @media print {
+            .toolbar-container { display: none !important; }
             
             @page { 
                 size: A4; 
@@ -1363,6 +1316,8 @@ const dragFeatureCode = `
                 width: 100% !important;
                 height: 100% !important; 
                 overflow: hidden !important; 
+                -webkit-print-color-adjust: exact !important; 
+                print-color-adjust: exact !important; 
             }
             
             .container { 
@@ -1373,31 +1328,24 @@ const dragFeatureCode = `
                 border: none !important; 
                 box-shadow: none !important; 
             }
-                .content-body {
-                border: 1.7px solid #d1d1d1 !important;
-                border-top: none !important;
         }
-        
-        .content-body img { cursor: col-resize; max-width: 100%; min-width: 50px; }
-        .resizing { user-select: none; cursor: col-resize !important; }
 
-       @supports (-webkit-touch-callout: none) {
-            .pdf-save-btn {
-                top: 60px !important; 
+        @media screen and (max-width: 768px) {
+            .toolbar-container { 
+                top: auto; bottom: 20px; right: 20px; left: 20px; 
+                flex-direction: row; justify-content: center;
             }
-            .container {
-                margin-top: 50px !important;
-                padding-bottom: 100px !important; 
-            }
+            .tool-btn { flex: 1; justify-content: center; font-size: 13px; }
+            .pdf-btn { display: none; }
         }
       </style>
       
       <script>
-        /* [기능 보호 구역: 로직 100% 원본 동일] */
+        // [중요: 인쇄 직전 화면 비율 자동 축소 로직]
         window.addEventListener('beforeprint', function() {
             const container = document.querySelector('.container');
             if (container) {
-                document.body.style.zoom = 1; 
+                document.body.style.zoom = 1; // 초기화
                 const a4Width = 794; 
                 const a4Height = 1123; 
                 const contentWidth = 1170; 
@@ -1405,34 +1353,81 @@ const dragFeatureCode = `
                 const scaleX = a4Width / contentWidth;
                 const scaleY = a4Height / contentHeight;
                 let finalZoom = Math.min(scaleX, scaleY);
-                document.body.style.zoom = finalZoom * 0.97;
+                document.body.style.zoom = finalZoom * 0.97; // 97%로 축소하여 여백 확보
             }
         });
 
         window.addEventListener('afterprint', function() {
-            document.body.style.zoom = '';
+            document.body.style.zoom = ''; // 인쇄 후 복구
         });
 
-        setTimeout(function() {
-            const editorBody = document.querySelector('.content-body');
-            if(editorBody) {
-                let isResizing = false; let currentImg = null; let startX = 0; let startWidth = 0;
-                editorBody.addEventListener('mousedown', function(e) { if (e.target.tagName === 'IMG') { e.preventDefault(); isResizing = true; currentImg = e.target; startX = e.clientX; startWidth = currentImg.getBoundingClientRect().width; document.body.classList.add('resizing'); }});
-                window.addEventListener('mousemove', function(e) { if (!isResizing || !currentImg) return; const diff = e.clientX - startX; currentImg.style.width = (startWidth + diff) + 'px'; });
-                window.addEventListener('mouseup', function() { if (isResizing) { isResizing = false; currentImg = null; document.body.classList.remove('resizing'); } });
-            }
-        }, 500);
+        function saveAsImage() {
+            // [1. 로딩 표시 시작]
+            document.getElementById('loadingOverlay').style.display = 'flex';
+            
+            const element = document.querySelector(".container");
+            window.scrollTo(0,0);
+
+            // ▼▼▼ [수정된 부분: 아이폰/모바일 감지 및 해상도 조절] ▼▼▼
+            // 모바일(아이폰/안드로이드)인지 확인
+            var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            
+            // 모바일이면 1.5배(메모리 절약), PC면 2배(고화질)
+            var targetScale = isMobile ? 1.5 : 2.0;
+            // ▲▲▲ [여기까지] ▲▲▲
+
+            html2canvas(element, {
+                scale: targetScale, // ◀ 수정됨: 고정값 2 대신 변수 사용
+                useCORS: true,
+                backgroundColor: "#ffffff",
+                logging: false,
+                windowWidth: 1200
+            }).then(canvas => {
+                document.getElementById('loadingOverlay').style.display = 'none';
+                const imgData = canvas.toDataURL("image/png");
+                
+                // [파일명 생성 로직]
+                const now = new Date();
+                const mm = String(now.getMonth() + 1).padStart(2, '0');
+                const dd = String(now.getDate()).padStart(2, '0');
+
+                let titleText = "";
+                const titleEl = document.getElementById('title');
+                if (titleEl && titleEl.innerText.trim() !== "") {
+                    titleText = titleEl.innerText.trim();
+                } else {
+                    titleText = document.title;
+                }
+                
+                titleText = titleText.replace(/[\\/\\?%*:|"<>]/g, '_');
+                const fileName = mm + dd + titleText + ".png";
+
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+                if (isIOS) {
+                    const modal = document.getElementById('imageModal');
+                    const resultImg = document.getElementById('resultImg');
+                    resultImg.src = imgData;
+                    modal.style.display = 'flex';
+                } else {
+                    const link = document.createElement('a');
+                    link.download = fileName;
+                    link.href = imgData;
+                    link.click();
+                }
+            }).catch(err => {
+                document.getElementById('loadingOverlay').style.display = 'none';
+                alert('이미지 생성 중 오류가 발생했습니다: ' + err);
+            });
+        }
       <\/script>
     `;
 
-
-    // </body> 태그 바로 앞에 기능 코드를 붙여넣음
     if(cleanHtml.includes("</body>")) {
         cleanHtml = cleanHtml.replace("</body>", dragFeatureCode + "</body>");
     } else {
-        cleanHtml += dragFeatureCode; // </body>가 없으면 맨 뒤에 추가
+        cleanHtml += dragFeatureCode; 
     }
-    // -----------------------------------------------------------
 
     const newWindow = window.open('', '_blank');
     if (newWindow) { 
