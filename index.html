@@ -186,6 +186,13 @@ body{font-family:"Pretendard Variable",-apple-system,BlinkMacSystemFont,sans-ser
 2. 강조 시 반드시 <strong>내용</strong> 태그 사용.
 3. 빈 <br>, 빈 <p>, 빈 <div>, &nbsp; 등을 여백 목적으로 삽입 금지.
 
+🚨🚨🚨 [CRITICAL — depth-3 길이 규칙 — 위반 시 불량 문서] 🚨🚨🚨
+depth-3(→)은 반드시 바로 위 depth-2(-)보다 글자 수가 같거나 더 길어야 한다.
+- depth-2가 팩트(사실)를 짧게 진술하면, depth-3은 그 원인·근거·수치·영향·후속 조치를 구체적으로 풀어써야 한다.
+- depth-3이 depth-2보다 짧으면 해당 줄은 불량이다. 출력 전 모든 depth-3을 하나씩 대조 검증할 것.
+✕ "- 생산 지속 시 도공량 최대 2.7g까지 상승" → "→ 블레이드 제어만으로는 감량 불가 판단" (depth-2보다 짧음 = 불량)
+✓ "- 생산 지속 시 도공량 최대 2.7g까지 상승" → "→ 블레이드 단독 제어 시 1.6g에서 1.0g까지만 감량 가능하며, 목표치 달성을 위해 추가수 농도 제어 병행이 불가피한 것으로 판단됨"
+
 **[계층 구조 (Hierarchy)]**
 content-body 안의 본문은 반드시 이 4단계 구조만 사용:
 ① 섹션 제목: <div class="section-title">1. 주요 결정사항</div>
@@ -251,10 +258,12 @@ content-body 안의 본문은 반드시 이 4단계 구조만 사용:
 * 2단계: 주제별 클러스터링 — 같은 안건을 하나의 section-title로 묶기
 * 3단계: 계층 구조 적용 — section-title → depth-1 → depth-2 → depth-3
 * 4단계: 검증 — 모든 section-title 아래 depth-1 존재 확인, 모든 depth-1 아래 depth-2 2줄 이상 확인
+* 5단계: depth-3 길이 검증 (필수) — 모든 depth-3(→)이 바로 위 depth-2(-)보다 글자 수가 같거나 더 긴지 하나씩 대조 확인. 짧은 depth-3이 1개라도 있으면 해당 줄을 구체적 근거·수치·일정·영향 범위를 추가하여 보강할 것.
 * 표(table) 활용 기준:
   - 반드시 표로 작성: ① 3개 이상 항목의 수치 비교(현황 vs 목표, 전월 vs 금월 등) ② 담당자+기한+과업이 함께 나오는 실행 계획 ③ 분류 기준이 2축 이상인 데이터(예: 구분/현재 상태/개선 대책)
   - 표 금지: 항목이 2개 이하이거나, 단순 나열만 필요한 경우는 depth-2로 작성.
   - 표 사용 시 반드시 content-table 클래스 적용.
+  - ⚠️ 표 너비 규칙: <colgroup>, col width, style="width" 사용 절대 금지. CSS가 자동 조절함. 레이블 열(구분, 항목 등 짧은 텍스트)은 내용이 길어지지 않으므로 자연스럽게 좁아지고, 설명/내용 열은 넓어짐.
 
 ---
 **[HTML 템플릿 코드]**
@@ -283,8 +292,7 @@ ul,li{list-style:none;padding:0;margin:0;}
 .depth-3{font-size:13.5px;font-weight:400;color:#777;margin-bottom:4px;margin-left:36px;padding-left:18px;text-indent:-18px;line-height:1.65;word-break:keep-all;}
 .content-table{width:100%;border-collapse:collapse;margin-top:12px;margin-bottom:20px;font-size:13px;border:1px solid #ddd;table-layout:auto;}
 .content-table th{background-color:#FAFAFA;border:1px solid #ddd;padding:8px 12px;font-weight:600;text-align:center;color:#333;white-space:nowrap;}
-.content-table td{border:1px solid #ddd;padding:8px 12px;text-align:left;color:#444;word-break:keep-all;}
-.content-table td:first-child{white-space:nowrap;width:1%;}
+.content-table td{border:1px solid #ddd;padding:8px 12px;text-align:center;color:#444;word-break:keep-all;min-width:100px;}
 [contenteditable]{outline:none !important;box-shadow:none !important;cursor:text;}
 strong{font-weight:700;color:#222;}
 cite,.cite,[data-source],span[class*="cite"]{display:none !important;opacity:0 !important;font-size:0 !important;width:0;height:0;overflow:hidden;}
@@ -348,6 +356,11 @@ cite,.cite,[data-source],span[class*="cite"]{display:none !important;opacity:0 !
 
 **🚫 [포맷팅 원칙]** Markdown 금지. 강조 시 <strong>태그 사용. 빈 <br>/<p>/&nbsp; 여백용 삽입 금지.
 
+🚨🚨🚨 [CRITICAL — depth-3 길이 규칙 — 위반 시 불량 문서] 🚨🚨🚨
+depth-3(→)은 반드시 바로 위 depth-2(-)보다 글자 수가 같거나 더 길어야 한다.
+- depth-2가 팩트를 짧게 진술하면, depth-3은 원인·근거·수치·영향·후속 조치를 구체적으로 풀어써야 한다.
+- depth-3이 depth-2보다 짧으면 불량. 출력 전 모든 depth-3을 하나씩 대조 검증할 것.
+
 **[계층 구조]**
 ① 섹션 제목: <div class="section-title">1. 요약</div>
 ② 대분류: <li class="depth-1">품질 분석 결과</li> — 소제목, 기호 없이 볼드
@@ -374,6 +387,7 @@ cite,.cite,[data-source],span[class*="cite"]{display:none !important;opacity:0 !
 - 반드시 표로 작성: ① 3개 이상 항목의 수치 비교(현황 vs 목표, 전월 vs 금월 등) ② 담당자+기한+과업이 함께 나오는 실행 계획 ③ 분류 기준이 2축 이상인 데이터
 - 표 금지: 항목이 2개 이하이거나, 단순 나열만 필요한 경우는 depth-2로 작성.
 - 표 사용 시 반드시 content-table 클래스 적용.
+- ⚠️ 표 너비 규칙: <colgroup>, col width, style="width" 사용 절대 금지. CSS가 자동 조절함.
 
 **📝 [작성 원칙]**
 1. 냉철한 개조식: ~확인함, ~로 결정됨. 2. 할루시네이션 방지. 3. 팩트 보존. 4. 참석자 명기.
@@ -402,6 +416,9 @@ cite,.cite,[data-source],span[class*="cite"]{display:none !important;opacity:0 !
    - 괄호는 약어 풀이 또는 단순 수치 보충에만 사용. 설명용 괄호 금지.
 7. depth-1 분량 균형: 같은 section-title 안에서 depth-1 간 depth-2 줄 수 차이가 2배를 넘지 않도록 균형 맞출 것.
 8. ⚠️ content-table 셀 가독성: 표 안의 텍스트에도 위 규칙을 동일 적용. 셀 하나에 2개 이상 문장 시 <br>로 줄바꿈. 셀 내 괄호 2개 연속 금지.
+
+**🔍 [최종 검증 — 출력 전 반드시 수행]**
+모든 depth-3(→)이 바로 위 depth-2(-)보다 글자 수가 같거나 더 긴지 하나씩 대조 확인. 짧은 depth-3이 1개라도 있으면 해당 줄을 구체적 근거·수치·일정·영향 범위를 추가하여 보강할 것.
 
 **🧹 [텍스트 클리닝]** cite/source/타임스탬프 삭제. 필수 전문 용어는 영문 유지.
 
@@ -432,8 +449,7 @@ ul,li{list-style:none;padding:0;margin:0;}
 .depth-3{font-size:13.5px;font-weight:400;color:#777;margin-bottom:4px;margin-left:36px;padding-left:18px;text-indent:-18px;line-height:1.65;word-break:keep-all;}
 .content-table{width:100%;border-collapse:collapse;margin-top:12px;margin-bottom:20px;font-size:13px;border:1px solid #ddd;table-layout:auto;}
 .content-table th{background-color:#FAFAFA;border:1px solid #ddd;padding:8px 12px;font-weight:600;text-align:center;color:#333;white-space:nowrap;}
-.content-table td{border:1px solid #ddd;padding:8px 12px;text-align:left;color:#444;word-break:keep-all;}
-.content-table td:first-child{white-space:nowrap;width:1%;}
+.content-table td{border:1px solid #ddd;padding:8px 12px;text-align:center;color:#444;word-break:keep-all;min-width:100px;}
 [contenteditable]{outline:none !important;box-shadow:none !important;cursor:text;}
 strong{font-weight:700;color:#222;}
 cite,.cite,[data-source],span[class*="cite"]{display:none !important;opacity:0 !important;font-size:0 !important;width:0;height:0;overflow:hidden;}
@@ -497,6 +513,11 @@ cite,.cite,[data-source],span[class*="cite"]{display:none !important;opacity:0 !
 
 **🚫 [포맷팅 원칙]** Markdown 금지. 강조 시 <strong>태그 사용.
 
+🚨🚨🚨 [CRITICAL — depth-3 길이 규칙 — 위반 시 불량 문서] 🚨🚨🚨
+depth-3(→)은 반드시 바로 위 depth-2(-)보다 글자 수가 같거나 더 길어야 한다.
+- depth-2가 팩트를 짧게 진술하면, depth-3은 원인·근거·수치·영향·후속 조치를 구체적으로 풀어써야 한다.
+- depth-3이 depth-2보다 짧으면 불량. 출력 전 모든 depth-3을 하나씩 대조 검증할 것.
+
 **[계층 구조]**
 - 섹션 제목: <div class="section-title">1. 미팅 요약</div>
 - 대분류: <li class="depth-1">프로젝트 범위 확정</li>
@@ -519,6 +540,7 @@ cite,.cite,[data-source],span[class*="cite"]{display:none !important;opacity:0 !
 - 반드시 표로 작성: ① 3개 이상 항목의 수치/비용 비교 ② 담당자+기한+과업이 함께 나오는 실행 계획 ③ 분류 기준이 2축 이상인 데이터(예: 요구사항/합의 여부/비고)
 - 표 금지: 항목이 2개 이하이거나, 단순 나열만 필요한 경우는 depth-2로 작성.
 - 표 사용 시 반드시 content-table 클래스 적용.
+- ⚠️ 표 너비 규칙: <colgroup>, col width, style="width" 사용 절대 금지. CSS가 자동 조절함.
 
 **📝 [작성 원칙]**
 1. 냉철한 개조식: ~확인함, ~로 결정됨. 2. 할루시네이션 방지: 녹음에 없는 날짜/금액 절대 창조 금지 → '미정' 또는 '확인 필요'로. 3. 팩트 보존. 4. 참석자 명기.
@@ -547,6 +569,9 @@ cite,.cite,[data-source],span[class*="cite"]{display:none !important;opacity:0 !
    - 괄호는 약어 풀이 또는 단순 수치 보충에만 사용. 설명용 괄호 금지.
 7. depth-1 분량 균형: 같은 section-title 안에서 depth-1 간 depth-2 줄 수 차이가 2배를 넘지 않도록 균형 맞출 것.
 8. ⚠️ content-table 셀 가독성: 표 안의 텍스트에도 위 규칙을 동일 적용. 셀 하나에 2개 이상 문장 시 <br>로 줄바꿈. 셀 내 괄호 2개 연속 금지.
+
+**🔍 [최종 검증 — 출력 전 반드시 수행]**
+모든 depth-3(→)이 바로 위 depth-2(-)보다 글자 수가 같거나 더 긴지 하나씩 대조 확인. 짧은 depth-3이 1개라도 있으면 해당 줄을 구체적 근거·수치·일정·영향 범위를 추가하여 보강할 것.
 
 **🧹 [텍스트 클리닝]** cite/source/타임스탬프 삭제. 필수 전문 용어는 영문 유지.
 
@@ -577,8 +602,7 @@ ul,li{list-style:none;padding:0;margin:0;}
 .depth-3{font-size:13.5px;font-weight:400;color:#777;margin-bottom:4px;margin-left:36px;padding-left:18px;text-indent:-18px;line-height:1.65;word-break:keep-all;}
 .content-table{width:100%;border-collapse:collapse;margin-top:12px;margin-bottom:20px;font-size:13px;border:1px solid #ddd;table-layout:auto;}
 .content-table th{background-color:#FAFAFA;border:1px solid #ddd;padding:8px 12px;font-weight:600;text-align:center;color:#333;white-space:nowrap;}
-.content-table td{border:1px solid #ddd;padding:8px 12px;text-align:left;color:#444;word-break:keep-all;}
-.content-table td:first-child{white-space:nowrap;width:1%;}
+.content-table td{border:1px solid #ddd;padding:8px 12px;text-align:center;color:#444;word-break:keep-all;min-width:100px;}
 [contenteditable]{outline:none !important;box-shadow:none !important;cursor:text;}
 strong{font-weight:700;color:#222;}
 cite,.cite,[data-source],span[class*="cite"]{display:none !important;opacity:0 !important;font-size:0 !important;width:0;height:0;overflow:hidden;}
